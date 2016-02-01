@@ -40,6 +40,7 @@ class BusinessCell: UITableViewCell {
         thumbImageView.clipsToBounds = true
         
         nameLabel.preferredMaxLayoutWidth = nameLabel.frame.size.width
+
     }
     
     // for rotating the screen
