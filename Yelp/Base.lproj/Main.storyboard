@@ -125,6 +125,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Yelp" id="UrD-qW-tzX">
                         <barButtonItem key="leftBarButtonItem" title="Filters" id="hzj-oP-fRu">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <segue destination="u2f-xQ-fMs" kind="modal" id="y95-BQ-SaJ"/>
                             </connections>
@@ -197,16 +198,19 @@
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="6Mc-dh-lo5">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="dzU-rx-UUY">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onCancelButton:" destination="rhf-QP-l9v" id="aRU-GK-ezR"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Search" id="JG2-yw-wSa">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onSearchButton:" destination="rhf-QP-l9v" id="E1P-Gx-eeh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="tableView" destination="aKs-2f-rbd" id="zfB-GN-5cU"/>
                     </connections>
@@ -220,9 +224,11 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jAD-91-okC" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jJh-yb-fok">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.72156862745098038" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -241,6 +247,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jiM-6g-bcX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.72156862749999995" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

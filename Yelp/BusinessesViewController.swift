@@ -2,8 +2,8 @@
 //  BusinessesViewController.swift
 //  Yelp
 //
-//  Created by Timothy Lee on 4/23/15.
-//  Copyright (c) 2015 Timothy Lee. All rights reserved.
+//  Created by Marty Kausas
+//  Copyright (c) 2015 Marty Kausas. All rights reserved.
 //
 
 import UIKit
@@ -50,7 +50,6 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        print("hdasd")
         Business.searchWithTerm(searchText, completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
             self.tableView.reloadData()
