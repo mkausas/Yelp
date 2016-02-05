@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FiltersViewControllerDelegate, UISearchBarDelegate {
+class BusinessesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FiltersViewControllerDelegate, UISearchBarDelegate, UIScrollViewDelegate {
 
     var businesses: [Business]!
     
@@ -48,6 +48,24 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         }
 */
     }
+    
+    var isMoreDataLoading = false
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
+                
+                isMoreDataLoading = true
+                
+                // Code to load more results
+                loadMoreData()
+            }
+        }
+    }
 
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         Business.searchWithTerm(searchText, completion: { (businesses: [Business]!, error: NSError!) -> Void in
@@ -74,7 +92,6 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCellWithIdentifier("BusinessCell", forIndexPath: indexPath) as! BusinessCell
         
         cell.business = businesses[indexPath.row]
-        
         
         return cell
     }
