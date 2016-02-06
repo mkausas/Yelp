@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class Business: NSObject {
     let name: String?
@@ -16,6 +17,7 @@ class Business: NSObject {
     let distance: String?
     let ratingImageURL: NSURL?
     let reviewCount: NSNumber?
+    let coordinate: CLLocationCoordinate2D?
     
     init(dictionary: NSDictionary) {
         name = dictionary["name"] as? String
@@ -28,6 +30,12 @@ class Business: NSObject {
         }
         
         let location = dictionary["location"] as? NSDictionary
+//        for locations in location! {
+////            print(locations["term"])
+//        }
+        
+        NSLog("%@", location!)
+        
         var address = ""
         if location != nil {
             let addressArray = location!["address"] as? NSArray
@@ -45,6 +53,18 @@ class Business: NSObject {
         }
         self.address = address
         
+        var latitude: Double!
+        var longitude: Double!
+        if location != nil {
+            let coordinateArray = location!.objectForKey("coordinate") as! NSDictionary
+            if coordinateArray.count > 0 {
+                latitude = coordinateArray["latitude"] as! Double
+                longitude = coordinateArray["longitude"] as! Double
+            }
+        }
+        
+        self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+
         let categoriesArray = dictionary["categories"] as? [[String]]
         if categoriesArray != nil {
             var categoryNames = [String]()

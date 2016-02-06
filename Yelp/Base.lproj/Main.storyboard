@@ -130,6 +130,12 @@
                                 <segue destination="u2f-xQ-fMs" kind="modal" id="y95-BQ-SaJ"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="ufv-pe-3ft">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="switchMap:" destination="2xI-yr-O5N" id="V4I-eT-xbs"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
