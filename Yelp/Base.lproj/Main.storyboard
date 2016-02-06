@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="127" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cY5-Pl-nBy">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="127" id="2GK-EJ-pSm" customClass="BusinessCell" customModule="Yelp" customModuleProvider="target">
@@ -117,7 +117,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cY5-Pl-nBy" firstAttribute="top" secondItem="XhR-oz-92f" secondAttribute="top" id="EMi-8a-tb7"/>
+                            <constraint firstItem="cY5-Pl-nBy" firstAttribute="top" secondItem="XhR-oz-92f" secondAttribute="top" constant="64" id="EMi-8a-tb7"/>
                             <constraint firstAttribute="trailing" secondItem="cY5-Pl-nBy" secondAttribute="trailing" id="Ufa-MG-kXy"/>
                             <constraint firstItem="cY5-Pl-nBy" firstAttribute="leading" secondItem="XhR-oz-92f" secondAttribute="leading" id="fVH-gf-zLp"/>
                             <constraint firstItem="VBY-gq-v8E" firstAttribute="top" secondItem="cY5-Pl-nBy" secondAttribute="bottom" id="gbd-yK-TH1"/>

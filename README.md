@@ -14,14 +14,17 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Search results page
+- [X] Search results page
    - [ ] Infinite scroll for restaurant results.
-   - [ ] Implement map view of restaurant results.
+   - [X] Implement map view of restaurant results.
 - [ ] Implement the restaurant detail page.
 
 The following **additional** features are implemented:
 
 - [X] Custom UI
+- [X] Working Filters
+- [X] Actually implemented searching
+- [X] Ability to switch back and forth between mapview and tablview
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
