@@ -15,26 +15,20 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
 
     var businesses: [Business]!
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     
+    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
     var mapView: MKMapView!
     var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 120 // only for scroll bar estimation
-        
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 200
         locationManager.requestWhenInUseAuthorization()
-//        locationManager.user
         
         let searchBar = UISearchBar()
         searchBar.delegate = self
@@ -43,6 +37,9 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         
         mapView = MKMapView(frame: tableView.frame)
         mapView.delegate = self
+        self.view.addSubview(mapView)
+        
+        initTable(1)
         
         Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
@@ -64,6 +61,18 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
 */
+    }
+    
+    func initTable(firstInit: Int) {
+        if firstInit == 0 {
+            tableView = UITableView(frame: mapView.frame)
+        }
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120 // only for scroll bar estimation
+        self.view.addSubview(tableView)
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -89,20 +98,26 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func switchMap(sender: AnyObject) {
-        UIView.transitionFromView(tableView, toView: mapView!, duration: 1000, options: UIViewAnimationOptions.Autoreverse) { (success) -> Void in
-            let centerLocation = CLLocation(latitude: 37.7833, longitude: -122.4167)
+        if rightBarButtonItem.title == "Map" {
+            UIView.transitionFromView(tableView, toView: mapView!, duration: 1000, options: UIViewAnimationOptions.ShowHideTransitionViews) { (success) -> Void in
+                let centerLocation = CLLocation(latitude: 37.7833, longitude: -122.4167)
 
-            self.goToLocation(centerLocation)
-//            self.addAnnotationAtCoordinate(CLLocationCoordinate2D(latitude: 37.7833, longitude: -122.4167))
-            self.setupAnnotations()
+                self.goToLocation(centerLocation)
+                self.setupAnnotations()
+            }
+            rightBarButtonItem.title = "List"
+        }
+            
+        else {
+            UIView.transitionFromView(self.mapView, toView: tableView  , duration: 1000, options: UIViewAnimationOptions.ShowHideTransitionViews) { (success) -> Void in
+                self.tableView.reloadData()
+            }
+            rightBarButtonItem.title = "Map"
         }
     }
     
     func setupAnnotations() {
-
         for business in businesses {
-            print("setting up yo")
-
             addAnnotationAtCoordinate(business)
         }
     }
